@@ -11,7 +11,7 @@ class Statuses extends Model implements Auditable
 {
     /** @use HasFactory<\Database\Factories\StatusesFactory> */
 
-    protected $fillable = ["name","icon","isTrash"]; 
+    protected $fillable = ["name","icon","color", "isTrash"];
 
 
     use \OwenIt\Auditing\Auditable;
@@ -24,6 +24,6 @@ class Statuses extends Model implements Auditable
             'id:' . $this->id,
         ];
     }
-                                            
+
     use HasFactory;
 }
