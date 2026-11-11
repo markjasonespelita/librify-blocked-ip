@@ -63,16 +63,17 @@
                     <livewire:statuses-search />
                 </div>
             </div>
-
             <div class='table-responsive'>
                 <table class='table table-striped'>
                     <thead>
                         <tr>
                             <th scope='col'>
-                            <input type='checkbox' name='' id='' class='checkAll'>
+                                <input type='checkbox' name='' id='' class='checkAll'>
                             </th>
                             <th>#</th>
-                            <th>Name</th><th>Icon</th>
+                            <th>Name</th>
+                            <th>Icon</th>
+                            <th>Color</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -81,25 +82,54 @@
                         @forelse($statuses as $item)
                             <tr>
                                 <th scope='row'>
-                                    <input type='checkbox' name='' id='' class='check' data-id='{{ optional($item)->id }}'>
+                                    <input type='checkbox' name='' id='' class='check'
+                                        data-id='{{ optional($item)->id }}'>
                                 </th>
                                 <td>{{ optional($item)->id }}</td>
-                                <td><a href="{{ url('show-statuses/'.optional($item)->id) }}" class="text-primary nav-link">{{ optional($item)->name }}</a></td><td>{{ optional($item)->icon }}</td>
+                                <td>
+                                    <a href="{{ url('show-statuses/'.optional($item)->id) }}"
+                                        class="text-primary nav-link">
+                                        {{ optional($item)->name }}
+                                    </a>
+                                </td>
+                                <td>{{ optional($item)->icon }}</td>
+                                <td>
+                                    <div class='d-flex align-items-center'>
+                                        <span style="
+                                            display: inline-block;
+                                            width: 25px;
+                                            height: 25px;
+                                            background-color: {{ optional($item)->color ?? '#ffffff' }};
+                                            border: 1px solid #ccc;
+                                            border-radius: 4px;
+                                            margin-right: 8px;
+                                        "></span>
+                                        <code>{{ optional($item)->color ?? '#ffffff' }}</code>
+                                    </div>
+                                </td>
                                 <td>
                                     @can('can show statuses')
-                                        <a href='{{ route('statuses.show', optional($item)->id) }}'><i class='fas fa-eye text-success'></i></a>
+                                        <a href='{{ route('statuses.show', optional($item)->id) }}'>
+                                            <i class='fas fa-eye text-success'></i>
+                                        </a>
                                     @endcan
+
                                     @can('can edit statuses')
-                                        <a href='{{ route('statuses.edit', optional($item)->id) }}'><i class='fas fa-edit text-info'></i></a>
+                                        <a href='{{ route('statuses.edit', optional($item)->id) }}'>
+                                            <i class='fas fa-edit text-info'></i>
+                                        </a>
                                     @endcan
+
                                     @can('can delete statuses')
-                                        <a href='{{ route('statuses.delete', optional($item)->id) }}'><i class='fas fa-trash text-danger'></i></a>
+                                        <a href='{{ route('statuses.delete', optional($item)->id) }}'>
+                                            <i class='fas fa-trash text-danger'></i>
+                                        </a>
                                     @endcan
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td>No Record...</td>
+                                <td colspan='6'>No Record...</td>
                             </tr>
                         @endforelse
                     </tbody>
