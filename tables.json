@@ -1,0 +1,42 @@
+[
+{
+            "col": "title",
+            "validate": "required",
+            "dataType": "string"
+        },
+        {
+            "col": "basis",
+            "validate": "required",
+            "dataType": "string"
+        },
+        {
+            "col": "total_sites",
+            "validate": "required",
+            "dataType": "integer"
+        },
+        {
+            "col": "done",
+            "validate": "required",
+            "dataType": "integer"
+        },
+        {
+            "col": "cant_be_reached",
+            "validate": "required",
+            "dataType": "integer"
+        },
+        {
+            "col": "offline",
+            "validate": "required",
+            "dataType": "integer"
+        },
+        {
+            "col": "not_found",
+            "validate": "required",
+            "dataType": "integer"
+        },
+        {
+            "col": "users_id",
+            "validate": "required",
+            "dataType": "integer"
+        }
+]
