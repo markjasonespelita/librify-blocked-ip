@@ -84,7 +84,7 @@
 
                     <tbody>
                         @forelse($sites as $item)
-                            <tr>
+                            <tr style="background-color: {{ optional($item->status)->color ?? '#ffffff' }}">
                                 <th scope='row'>
                                     <input type='checkbox' name='' id='' class='check' data-id='{{ optional($item)->id }}'>
                                 </th>
