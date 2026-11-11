@@ -47,7 +47,7 @@ class StatusesController extends Controller {
      */
     public function store(StoreStatusesRequest $request)
     {
-        Statuses::create(['name' => $request->name,'icon' => $request->icon]);
+        Statuses::create(['name' => $request->name,'icon' => $request->icon, 'color' => $request->color]);
 
         return back()->with('success', 'Statuses Added Successfully!');
     }
@@ -81,6 +81,7 @@ class StatusesController extends Controller {
 
         $statuses->name = $request->name;
         $statuses->icon = $request->icon;
+        $statuses->color = $request->color;
 
         $statuses->save();
 
